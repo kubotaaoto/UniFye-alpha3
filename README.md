@@ -1,7 +1,8 @@
 # UniFye-alpha3
 
-| App Name                               | UniFye                                                                                                                                        |
+| Field                               | Answer                                                                                                                                     |
 | -------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| App Name                               | UniFye                                                                                                                                        |
 | App Type                               | Social media website                                                                                                                          |
 | Problem It Solves                      | Connect Students at Texas Tech university in a more modern and user-friendly way                                                              |
 | Page 1 — Name & Description            | Log in page, used to log in!                                                                                                                  |
