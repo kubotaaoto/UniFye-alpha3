@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages • UniFye</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="top-header">
+        <div class="university-brand">
+            <img src="images/texas-tech-logo.png" alt="TTU Logo" class="uni-logo">
+            <span class="uni-name">Texas Tech University</span>
+        </div>
+        <div class="user-label">Kakamyrat Mammedov</div>
+        <nav class="nav">
+            <a href="index.html" class="nav-btn">🏠</a>
+            <a href="messages.html" class="nav-btn active">✉️</a>
+            <a href="profile.html" class="nav-btn">👤</a>
+        </nav>
+    </header>
+
+    <main class="messenger-container">
+        
+        <section class="sidebar">
+            <div class="sidebar-title">
+                <h2>Friends</h2>
+            </div>
+            <div class="filter-box">
+                <input type="text" placeholder="Search friends..." aria-label="Filter friends">
+            </div>
+            <div id="friends-list" class="friends-list-wrapper">
+                </div>
+        </section>
+
+        <section class="chat-area">
+            <header class="chat-status-header">
+                <h3>Chris</h3>
+                <span class="status-indicator online">Online</span>
+            </header>
+            
+            <div id="messages-container" class="chat-viewport">
+                </div>
+
+            <footer class="chat-input-bar">
+                <form id="chat-form" class="message-form" onsubmit="return false;">
+                    <label for="message-input" class="sr-only">Type your message</label>
+                    <input type="text" id="message-input" placeholder="Type a message..." required>
+                    <button type="submit" id="send-btn">→</button>
+                </form>
+            </footer>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>&copy; 2026 UniFye Team - Texas Tech University</p>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

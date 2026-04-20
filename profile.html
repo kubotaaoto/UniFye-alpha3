@@ -1,100 +1,70 @@
-<!-- Mark Torrez  -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Texas Tech Profile</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile • Mark Torrez</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div class="page-shell">
-    <header class="topbar">
-      <div class="brand-row">
-        <img class="seal-logo" src="images/seal.svg" alt="Texas Tech seal">
-        <span class="brand-title">Texas Tech University</span>
-      </div>
-      <div class="topbar-name">Mark Torrez</div>
+    <header class="top-header">
+        <div class="university-brand">
+            <img src="images/texas-tech-logo.png" alt="TTU Logo" class="uni-logo">
+            <span class="uni-name">Texas Tech University</span>
+        </div>
+        
+        <nav class="nav">
+            <a href="index.html" class="nav-btn">🏠 Home</a>
+            <a href="messages.html" class="nav-btn">✉️ Messages</a>
+            <a href="profile.html" class="nav-btn active">👤 Profile</a>
+            <a href="login.html" class="nav-btn">🔓 Login</a>
+        </nav>
+        
+        <div class="user-meta">
+            <span>Mark Torrez</span>
+        </div>
     </header>
 
-    <div class="page-grid">
-      <aside class="sidebar" aria-label="Main navigation">
-        <button class="nav-btn active" data-section="profile" aria-label="Home">
-          <img src="images/icon-home.svg" alt="Home icon">
-        </button>
-        <button class="nav-btn" data-section="messages" aria-label="Messages">
-          <img src="images/icon-chat.svg" alt="Messages icon">
-        </button>
-        <button class="nav-btn" data-section="user" aria-label="Profile">
-          <img src="images/icon-user.svg" alt="Profile icon">
-        </button>
-        <button class="nav-btn" data-section="settings" aria-label="Settings">
-          <img src="images/icon-settings.svg" alt="Settings icon">
-        </button>
-      </aside>
+    <main class="profile-container">
+        <section class="card profile-detail">
+            <header class="profile-header">
+                <img src="images/seal.svg" alt="Student Profile Image" class="profile-image">
+                <h1>Mark Torrez</h1>
+                <p class="student-rank">Freshman • Software Engineering</p>
+                
+                <div class="profile-status">
+                    <label for="completion">Profile Completion:</label>
+                    <div class="progress-container">
+                        <div id="completion" class="progress-bar" style="width: 75%;"></div>
+                    </div>
+                    <span class="status-badge">Active Student</span>
+                </div>
+            </header>
 
-      <section class="panel profile-panel">
-        <div class="profile-card">
-          <img src="images/seal.svg" alt="University seal" class="profile-seal">
-          <div class="profile-meta">
-            <strong>Mark Torrez</strong>
-            <span>Texas Tech University</span>
-            <span>Freshman</span>
-            <span>Software Engineer</span>
-          </div>
-        </div>
-      </section>
+            <div class="profile-content">
+                <h2>About</h2>
+                <p>Ambitious computer science student passionate about building modern web applications.</p>
 
-      <section class="panel info-panel">
-        <div class="info-section" data-key="about">
-          <div class="info-header">
-            <h2>About:</h2>
-            <button class="edit-btn" type="button">Edit</button>
-          </div>
-          <div class="info-content">
-            <p>Ambitious computer science student who loves building modern web experiences.</p>
-          </div>
-        </div>
-        <div class="info-section" data-key="experience">
-          <div class="info-header">
-            <h2>Experience / Internships:</h2>
-            <button class="edit-btn" type="button">Edit</button>
-          </div>
-          <div class="info-content">
-            <p>Worked on student web applications, design systems, and collaborative team projects.</p>
-          </div>
-        </div>
-        <div class="info-section" data-key="contact">
-          <div class="info-header">
-            <h2>Contact:</h2>
-            <button class="edit-btn" type="button">Edit</button>
-          </div>
-          <div class="info-content">
-            <p>Email: mtorrez@ttu.edu</p>
-            <p>Phone: (806) 555-0192</p>
-          </div>
-        </div>
-      </section>
+                <h2>Organizations</h2>
+                <ul class="org-list">
+                    <li>ACM Student Chapter</li>
+                    <li>Hack Club</li>
+                    <li>Robotics Society</li>
+                </ul>
+            </div>
 
-      <section class="panel org-panel">
-        <div class="org-title-row">
-          <h2>Organizations</h2>
-        </div>
-        <ul class="org-list" id="orgList">
-          <li class="org-item active" data-org="acm">ACM Student Chapter</li>
-          <li class="org-item" data-org="hackclub">Hack Club</li>
-          <li class="org-item" data-org="robotics">Robotics Society</li>
-          <li class="org-item" data-org="women">Women in Tech</li>
-          <li class="org-item" data-org="esports">Esports Club</li>
-        </ul>
-        <div class="org-details" id="orgDetails">
-          <h3>ACM Student Chapter</h3>
-          <p>Weekly meetings for coding challenges, mentoring, and campus software events.</p>
-        </div>
-      </section>
-    </div>
-  </div>
+            <footer class="profile-actions">
+                <button class="btn btn-edit" onclick="location.href='login.html'">Edit Profile</button>
+                <button class="btn btn-archive">Archive Profile</button>
+                <button class="btn btn-back" onclick="location.href='index.html'">Back to Dashboard</button>
+            </footer>
+        </section>
+    </main>
 
-  <script src="script.js"></script>
+    <footer class="site-footer">
+        <p>&copy; 2026 Texas Tech University - UniFye Project</p>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>

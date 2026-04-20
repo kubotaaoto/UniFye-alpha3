@@ -1,109 +1,67 @@
-// js/script.js
 const friends = [
-    { id: 1, name: "Chris", avatar: "images/chris.jpg", status: "online", lastMsg: "Sure, that sounds good", time: "9:07 AM", active: true },
-    { id: 2, name: "Oliver Williams", avatar: "https://randomuser.me/api/portraits/men/32.jpg", status: "online", lastMsg: "Good morning!" },
-    { id: 3, name: "Kevin Brown", avatar: "https://randomuser.me/api/portraits/men/45.jpg", status: "online", lastMsg: "Talk to you later" },
-    { id: 4, name: "Emma Davis", avatar: "https://randomuser.me/api/portraits/women/44.jpg", status: "offline", lastMsg: "Did you finish home..." },
-    { id: 5, name: "Lucas Miller", avatar: "https://randomuser.me/api/portraits/men/67.jpg", status: "offline", lastMsg: "Please review the..." },
-    { id: 6, name: "Ava Martin", avatar: "https://randomuser.me/api/portraits/women/65.jpg", status: "online", lastMsg: "Are you joining..." },
-    { id: 7, name: "Benjamin Clark", avatar: "https://randomuser.me/api/portraits/men/22.jpg", status: "offline", lastMsg: "Have a great week..." },
-    { id: 8, name: "Natalie Johnson", avatar: "https://randomuser.me/api/portraits/women/33.jpg", status: "offline", lastMsg: "" }
+    { name: "Chris", avatar: "images/chris.jpg", status: "online", lastMsg: "Sure, that sounds good" },
+    { name: "Oliver Williams", avatar: "https://randomuser.me/api/portraits/men/32.jpg", status: "online" },
+    { name: "Emma Davis", avatar: "https://randomuser.me/api/portraits/women/44.jpg", status: "offline" }
 ];
 
-const initialMessages = [
-    { type: "received", text: "Good morning!", time: "9:00 AM" },
-    { type: "received", text: "Can we meet at 4pm", time: "9:00 AM" },
-    { type: "sent", text: "Sure, that sounds good", time: "9:07 AM" }
-];
-
-// Render Friends List
 function renderFriends() {
-    const container = document.querySelector('.friends-list');
-    container.innerHTML = `<div class="friends-header"><span>Friends</span></div>`;
-    
+    const container = document.getElementById('friends-list');
+    if (!container) return;
+
+    container.innerHTML = '';
     friends.forEach(friend => {
         const div = document.createElement('div');
-        div.className = `friend-item ${friend.active ? 'active' : ''}`;
+        div.style.cssText = 'padding:15px 20px; display:flex; align-items:center; gap:12px; cursor:pointer; border-bottom:1px solid #eee;';
         div.innerHTML = `
-            <div class="avatar ${friend.status}">
-                <img src="${friend.avatar}" alt="${friend.name}">
-                <span class="status-dot"></span>
+            <div style="position:relative; width:45px; height:45px;">
+                <img src="${friend.avatar}" style="width:100%; height:100%; border-radius:50%; object-fit:cover;">
+                <span style="position:absolute; bottom:2px; right:2px; width:14px; height:14px; background:${friend.status==='online'?'#22c55e':'#999'}; border:2px solid white; border-radius:50%;"></span>
             </div>
-            <div class="friend-info">
-                <div class="friend-name">${friend.name}</div>
-                <div class="friend-lastmsg">${friend.lastMsg}</div>
+            <div>
+                <div style="font-weight:600;">${friend.name}</div>
+                <div style="font-size:0.9rem; color:#666;">${friend.lastMsg || 'Tap to chat'}</div>
             </div>
         `;
         container.appendChild(div);
     });
 }
 
-// Render Messages
-function renderMessages() {
-    const container = document.getElementById('messages-container');
-    container.innerHTML = '';
-    
-    initialMessages.forEach(msg => {
-        const msgDiv = document.createElement('div');
-        msgDiv.className = `message ${msg.type}`;
-        msgDiv.innerHTML = `
-            ${msg.text}
-            <div class="message-time">${msg.time}</div>
-        `;
-        container.appendChild(msgDiv);
-    });
-    
-    container.scrollTop = container.scrollHeight;
-}
-
-// Send Message
-function sendMessage() {
+// Simple chat demo
+function initChat() {
+    const sendBtn = document.getElementById('send-btn');
     const input = document.getElementById('message-input');
-    const text = input.value.trim();
-    
-    if (!text) return;
-    
     const container = document.getElementById('messages-container');
-    
-    const msgDiv = document.createElement('div');
-    msgDiv.className = 'message sent';
-    msgDiv.innerHTML = `
-        ${text}
-        <div class="message-time">just now</div>
-    `;
-    container.appendChild(msgDiv);
-    container.scrollTop = container.scrollHeight;
-    
-    input.value = '';
+
+    if (!sendBtn || !input || !container) return;
+
+    const initialMessages = [
+        { text: "Good morning!", type: "received" },
+        { text: "Sure, that sounds good", type: "sent" }
+    ];
+
+    initialMessages.forEach(msg => {
+        const div = document.createElement('div');
+        div.style.cssText = `align-self: ${msg.type === 'sent' ? 'flex-end' : 'flex-start'}; background: ${msg.type === 'sent' ? 'var(--ttu-red)' : 'white'}; color: ${msg.type === 'sent' ? 'white' : 'black'}; padding:12px 16px; border-radius:18px; max-width:70%;`;
+        div.innerHTML = `${msg.text}<div style="font-size:0.7rem; opacity:0.7; margin-top:4px;">9:07 AM</div>`;
+        container.appendChild(div);
+    });
+
+    sendBtn.addEventListener('click', () => {
+        if (!input.value.trim()) return;
+        const div = document.createElement('div');
+        div.style.cssText = 'align-self:flex-end; background:var(--ttu-red); color:white; padding:12px 16px; border-radius:18px; max-width:70%;';
+        div.innerHTML = `${input.value}<div style="font-size:0.7rem; opacity:0.7; margin-top:4px;">just now</div>`;
+        container.appendChild(div);
+        container.scrollTop = container.scrollHeight;
+        input.value = '';
+    });
+
+    input.addEventListener('keypress', e => {
+        if (e.key === 'Enter') sendBtn.click();
+    });
 }
 
-// Event Listeners
-function init() {
+window.onload = () => {
     renderFriends();
-    renderMessages();
-    
-    // Send button
-    document.getElementById('send-btn').addEventListener('click', sendMessage);
-    
-    // Enter key
-    const messageInput = document.getElementById('message-input');
-    messageInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            sendMessage();
-        }
-    });
-    
-    // Search functionality
-    document.getElementById('search-input').addEventListener('input', (e) => {
-        const term = e.target.value.toLowerCase();
-        const items = document.querySelectorAll('.friend-item');
-        
-        items.forEach(item => {
-            const name = item.querySelector('.friend-name').textContent.toLowerCase();
-            item.style.display = name.includes(term) ? 'flex' : 'none';
-        });
-    });
-}
-
-// Initialize the app
-window.onload = init;
+    initChat();
+};

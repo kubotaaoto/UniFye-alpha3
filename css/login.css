@@ -1,14 +1,30 @@
-body {
+/* 1. Global Reset & Variables */
+* {
     margin: 0;
-    font-family: sans-serif;
-    background-color: #f0f0f0; /* Light grey background */
+    padding: 0;
+    box-sizing: border-box; /* Ensures padding doesn't break layout [cite: 38] */
+}
+
+:root {
+    --ttu-red: #CC0000;
+    --ttu-black: #2C2C2C;
+    --light-bg: #f0f0f0; /* Consistent light grey background [cite: 15] */
+    --card-bg: #ffffff;
+    --accent-green: #66cc00;
+    --border-color: #ddd;
+    --transition-speed: 0.2s;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--light-bg);
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh;
+    min-height: 100vh; /* Fulfills requirement for full-page layout [cite: 18] */
 }
 
-/* Header */
+/* 2. Semantic Layout Elements  */
 header {
     width: 100%;
     display: flex;
@@ -16,66 +32,54 @@ header {
     justify-content: space-between;
     background-color: #fff;
     padding: 10px 20px;
-    box-sizing: border-box;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
 }
 
-.login-label {
-    color: #888;
-    font-size: 0.8rem;
-}
-
-.header-content {
-    display: flex;
-    align-items: center;
-    flex-grow: 1;
-    justify-content: space-between;
-    background-color: #99ff99; /* Light green area as seen in image */
-    padding: 10px;
-    border-radius: 5px;
-    margin-left: 20px; /* Space from Login label */
-}
-
-.logo {
-    width: 50px; /* Adjust size as needed */
-    height: auto;
-    /* Placeholder styling */
-    background-color: #ddd;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    color: #555;
-    font-size: 1.5rem;
-}
-
-.uni-name {
-    color: #fff;
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-left: 10px;
-}
-
-.user-name {
-    color: #fff;
-    font-weight: bold;
-    font-size: 1.2rem;
-    margin-left: auto; /* Push to the right */
-}
-
-/* Main Body & Login Card */
 main {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex-grow: 1; /* Take up remaining space */
+    flex-grow: 1; /* Occupies remaining vertical space [cite: 18] */
     width: 100%;
+    padding: 20px;
 }
 
-.login-card {
-    background-color: #fffaf0; /* Light cream/off-white card */
+footer {
+    width: 100%;
+    background-color: var(--ttu-black);
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto; /* Pushes footer to bottom of page [cite: 21] */
+}
+
+/* 3. Consistent Navigation [cite: 19] */
+nav {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-btn {
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: var(--transition-speed);
+}
+
+.nav-btn:hover, .nav-btn.active {
+    background-color: var(--ttu-red);
+    color: #fff; /* Active page highlighting [cite: 19] */
+}
+
+/* 4. Page Type 2: Data-Entry Form Styling [cite: 34] */
+.card {
+    background-color: #fffaf0; /* Light cream card as requested */
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
@@ -84,98 +88,91 @@ main {
     text-align: center;
 }
 
-h2 {
-    margin-top: 0;
-    margin-bottom: 20px;
-    color: #333;
-}
-
-/* Form elements */
 form {
     display: flex;
     flex-direction: column;
-    gap: 15px; /* Spacing between form fields and button */
+    gap: 15px;
+    text-align: left; /* Aligns labels properly [cite: 39] */
+}
+
+label {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: -10px; /* Tightens label grouping [cite: 39] */
 }
 
 input[type="email"],
-input[type="password"] {
+input[type="password"],
+select,
+textarea {
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
-    box-sizing: border-box; /* Include padding/border in width */
-    background-color: #f9f9f9; /* Slightly darker than form card */
+    background-color: #f9f9f9;
+    transition: border-color var(--transition-speed);
 }
 
-.login-button {
-    background-color: #66cc00; /* Green button */
-    color: #fff;
+/* Requirement: Form validation styling - focus state  */
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border: 2px solid var(--ttu-red); /* Highlights border on click  */
+    background-color: #fff;
+}
+
+/* 5. Buttons & Interactive Elements [cite: 31, 37] */
+.btn {
     padding: 12px;
     border: none;
     border-radius: 5px;
     font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: background-color 0.2s;
+    transition: background-color var(--transition-speed);
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
 }
 
-.login-button:hover {
+.btn-primary {
+    background-color: var(--accent-green);
+    color: #fff;
+}
+
+.btn-primary:hover {
     background-color: #55aa00; /* Darker green on hover */
 }
 
-/* Alternative Login */
-.divider {
-    height: 1px;
-    background-color: #ddd;
-    margin: 25px 0;
-}
-
-.google-button {
-    background-color: #333; /* Dark background */
+.btn-secondary {
+    background-color: #333;
     color: #fff;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: background-color 0.2s;
-    margin-bottom: 15px;
     width: 100%;
-    box-sizing: border-box;
 }
 
-.google-button:hover {
+.btn-secondary:hover {
     background-color: #222;
 }
 
-.google-icon {
-    /* Placeholder icon */
-    width: 20px;
-    height: 20px;
-    background-color: #fff;
-    color: #333;
-    border-radius: 3px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 10px;
+/* 6. Page Type 1 & 3: Visual Extras [cite: 30, 49] */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.8rem;
     font-weight: bold;
+    background-color: var(--border-color);
 }
 
-/* Footer */
-.card-footer {
-    color: #777;
-    font-size: 0.9rem;
+.progress-container {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 10px;
+    height: 10px;
+    margin: 10px 0;
 }
 
-.card-footer a {
-    color: #66ccff; /* Blue for linked text */
-    text-decoration: none;
+.progress-bar {
+    height: 100%;
+    background-color: var(--ttu-red);
+    border-radius: 10px;
 }
-
-        .card-footer a:hover {
-            text-decoration: underline;
-        }

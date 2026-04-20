@@ -3,67 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UniFye</title>
+    <title>UniFye - Home Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
-    <div class="dashboard-container">
+    <header class="top-header">
+        <div class="university-brand">
+            <img src="images/texas-tech-logo.png" alt="Texas Tech University Logo" class="uni-logo">
+            <span class="uni-name">Texas Tech University</span>
+        </div>
         
-        <div class="top-left">
-            <h3>News:</h3>
-            <ul class="news-list">
-                <li>Local headline update placeholder</li>
-                <li>Community announcement detail</li>
-                <li>Breaking news or weather alert</li>
-                <li>Campus or corporate event info</li>
-            </ul>
+        <nav class="nav">
+            <a href="index.html" class="nav-btn active">🏠 Home</a>
+            <a href="messages.html" class="nav-btn">✉️ Messages</a>
+            <a href="profile.html" class="nav-btn">👤 Profile</a>
+            <a href="login.html" class="nav-btn">🔓 Login</a>
+        </nav>
+        
+        <div class="user-display">
+            <span>Mark Torrez</span>
         </div>
+    </header>
 
-        <div class="top-right">
-            <div class="info-block">
-                <div class="info-row"><span>Date:</span> Current Date</div>
-                <div class="info-row"><span>Time:</span> 12:00 PM</div>
+    <main class="container">
+        <section class="welcome-header">
+            <h1>Welcome back, Mark!</h1>
+            <p>Here's what's happening on campus today.</p>
+            
+            <div class="filter-controls">
+                <label for="sort-events">Sort by:</label>
+                <select id="sort-events">
+                    <option value="newest">Newest First</option>
+                    <option value="category">Category</option>
+                </select>
             </div>
-            <div class="info-block">
-                <div class="info-row"><span>Weather:</span> 72°F, Sunny</div>
-                <div class="info-row"><span>Friends online:</span> 12 Active</div>
-            </div>
-        </div>
+        </section>
 
-        <div class="hero-section">
-            <div class="hero-text">
-                ( Images of current events or upcoming events )
-            </div>
-            <div class="carousel-dots">
-                <div class="dot"></div>
-                <div class="dot active"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-            </div>
-        </div>
+        <section class="content-grid">
+            
+            <article class="card">
+                <div class="card-header">
+                    <h2>💬 Messages</h2>
+                    <span class="category-tag">Social</span>
+                </div>
+                <p>3 new messages from your classmates.</p>
+                <span class="status-badge">New Activity</span>
+                <div class="card-actions">
+                    <button class="btn-primary" onclick="location.href='messages.html'">View Inbox</button>
+                </div>
+            </article>
 
-        <div class="bottom-left">
-            <div class="nav-icon" title="Messages">✉️</div>
-            <div class="nav-icon" title="Profile/Friends">👤</div>
-            <div class="nav-icon" title="Settings">⚙️</div>
-        </div>
+            <article class="card">
+                <div class="card-header">
+                    <h2>📅 Tech Career Fair</h2>
+                    <span class="category-tag">April 21, 2026</span>
+                </div>
+                <p>Meet with top engineering recruiters at the SUB.</p>
+                <span class="status-badge urgent">Reminder</span>
+                <div class="card-actions">
+                    <button class="btn-primary">Add to Calendar</button>
+                </div>
+            </article>
 
-        <div class="bottom-right">
-            <h3>Organizations:</h3>
-            <ul class="org-list">
-                <li>Student Council</li>
-                <li>Tech Club</li>
-                <li>Volunteer Group</li>
-                <li>Intramural Sports</li>
-            </ul>
-        </div>
+            <article class="card">
+                <div class="card-header">
+                    <h2>📢 Finals Schedule</h2>
+                    <span class="category-tag">Academics</span>
+                </div>
+                <p>The Spring 2026 final exam schedule is now live.</p>
+                <span class="status-badge">Official News</span>
+                <div class="card-actions">
+                    <button class="btn-primary">Download PDF</button>
+                </div>
+            </article>
 
-    </div>
+        </section>
+    </main>
 
+    <footer>
+        <p>&copy; 2026 UniFye Team - ENGR 1340 Project</p>
+    </footer>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
