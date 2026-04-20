@@ -1,5 +1,5 @@
 const friends = [
-    { name: "Chris", avatar: "images/chris.jpg", status: "online", lastMsg: "Sure, that sounds good" },
+    { name: "Chris", avatar: "https://randomuser.me/api/portraits/men/94.jpg", status: "online", lastMsg: "Do I know you?" },
     { name: "Oliver Williams", avatar: "https://randomuser.me/api/portraits/men/32.jpg", status: "online" },
     { name: "Emma Davis", avatar: "https://randomuser.me/api/portraits/women/44.jpg", status: "offline" }
 ];
@@ -36,7 +36,7 @@ function initChat() {
 
     const initialMessages = [
         { text: "Good morning!", type: "received" },
-        { text: "Sure, that sounds good", type: "sent" }
+        { text: "Do I know you?", type: "sent" }
     ];
 
     initialMessages.forEach(msg => {

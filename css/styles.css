@@ -273,3 +273,43 @@ textarea:focus {
     clip: rect(0, 0, 0, 0);
     border: 0;
 }
+
+/* Center the login heading */
+.card h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+/* Style and center the "OR" divider with lines on the sides */
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 15px 0;
+    color: #666;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+}
+
+.divider span {
+    padding: 0 15px;
+}
+
+/* Center the card footer text */
+.card-footer {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Optional: Center the content inside the header (Texas Tech University • UniFye) */
+.card-header {
+    text-align: center;
+    margin-bottom: 10px;
+}
